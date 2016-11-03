@@ -1,0 +1,12 @@
+{
+    "name": "krzystof/fantasts",
+    "description": "A statistical analysis using phploc to provide rake stats like output",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christophe Graniczny",
+            "email": "getintouch@christophegraniczny.com"
+        }
+    ],
+    "require": {}
+}
