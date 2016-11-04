@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
+} else {
+    require __DIR__.'/../../../autoload.php';
+}
+
+use Fantasts\Report;
+use Fantasts\Analyzer;
+use Silly\Application;
+use Illuminate\Support\Collection;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+$version = '1.0';
+
+$app = new Application('Fantasts', $version);
+
+$app->command('me', function () {
+
+    // detect the project?
+
+    $stats = Collection::make([
+        'src' => 'App',
+        'tests' => 'Unit Tests',
+    ])->map(function ($dir, $name) {
+        return Analyzer::directory($dir, $name);
+    });
+
+    Report::from($stats)->printTo(new ConsoleOutput);
+
+})->descriptions('Statically analyze a the project to compare it with your peers');
+
+$app->run();
