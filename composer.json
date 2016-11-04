@@ -8,5 +8,16 @@
             "email": "getintouch@christophegraniczny.com"
         }
     ],
-    "require": {}
+    "autoload": {
+      "psr-4": {
+        "Fantasts\\": "src/"
+      },
+      "files": ["src/helpers.php"]
+    },
+    "require-dev": {},
+    "require": {
+        "mnapoli/silly": "^1.5",
+        "tightenco/collect": "^5.3",
+        "phploc/phploc": "^3.0"
+    }
 }
